@@ -1,0 +1,33 @@
+<div id="loading" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+</div>
+
+<div class="principal" id="content" *ngIf="!isLoading">
+    <div class="second">
+        <div class="profesor">
+            <img src="profesor.png" alt="Profesor Pokémon">
+        </div>
+    
+        <div class="chat-bubble">
+            <h1>¡Hola a todos, entrenadores Pokémon!</h1>
+            <p>🌟✨ ¡Espero que estén teniendo un día lleno de aventuras y diversión! ✨🌟</p>
+            <p>
+                Quiero invitarles a sumergirse en el maravilloso mundo de los Pokémon. 
+                ¿Alguna vez se han preguntado cuál es su Pokémon favorito? 🤔 Ahora es el momento perfecto para descubrirlo. 
+                Les invito a buscar en la <strong>Pokédex</strong> y explorar la vasta diversidad de Pokémon que habitan en este increíble universo.
+            </p>
+            <p>
+                Desde los adorables y tiernos hasta los poderosos y majestuosos, hay un Pokémon para cada uno de nosotros. 
+                ¡Quién sabe, tal vez encuentren un nuevo compañero de equipo que nunca antes habían considerado! 🕵️‍♂️🔍
+            </p>
+            <p>
+                ¡Así que no esperen más! Tomen su <strong>Pokédex</strong>, ábranla y déjense sorprender por todas las increíbles criaturas que esperan ser descubiertas. 🌍🎮
+            </p>
+            <p>¡Que la suerte y la diversión los acompañen en esta emocionante búsqueda! ¡Atrápalos a todos!</p>
+            <p>Con cariño,<br>Profesor Oak</p>
+            
+            <button (click)="goToDashboard()">Ir al Dashboard</button>
+        </div>
+    </div>
+</div>

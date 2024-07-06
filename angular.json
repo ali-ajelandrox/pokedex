@@ -37,7 +37,9 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+                "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "node_modules/animate.css/animate.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -107,5 +109,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5412359b-c92f-43f9-bc2d-f3f5cb8b40a8"
   }
 }

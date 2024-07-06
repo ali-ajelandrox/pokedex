@@ -1,0 +1,52 @@
+<div class="nav-container row align-items-center bg-dark text-white p-3">
+  <div class="col-auto">
+    <img class="nav-img" src="https://img.icons8.com/?size=100&id=iblgOKxLVFHU&format=png&color=000000" alt="logo">
+  </div>
+  <div class="col">
+    <h1 class="m-0"><img class="img-title" src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png" alt="">
+    </h1>
+  </div>
+  <div class="col-auto d-flex text-center align-items-center">
+    <img class="list-icon" src="https://img.icons8.com/?size=100&id=36315&format=png&color=000000" alt="">
+    <h5>{{ pokemonList.length }}</h5>
+  </div>
+  <div class="col-auto">
+    <input type="text" class="form-control" placeholder="Buscar nombre o número" (input)="searchPokemon($event)">
+  </div>
+</div>
+
+<div class="pokedex-container row mt-4 position-relative">
+  <div class="img-container col-lg-8 mb-4 mb-lg-0">
+    <div class="pokemon-img bg-white p-4 rounded shadow text-center position-relative" [ngClass]="{'fade-out': !selectedPokemon}">
+      <div class="resultado" *ngIf="selectedPokemon && selectedPokemon.sprite">
+        <img class="sprites mb-4" [src]="selectedPokemon.sprite" alt="{{ selectedPokemon.name }}">
+        <p class="resultado-name mb-1 position-absolute top-0 start-0"><strong>{{ selectedPokemon.name }}</strong></p>
+        <p class="resultado-id mb-1 position-absolute top-0 end-0">ID: #{{ selectedPokemon.id }}</p>
+        <p class="resultado-altura mb-1">Height: {{ selectedPokemon.height }} Mts</p>
+        <p class="resultado-peso mb-1">Weight: {{ selectedPokemon.weight }} Kg</p>
+        <div *ngFor="let type of selectedPokemon.types" [ngClass]="type | lowercase" class="badge me-1">{{ type }}</div>
+      </div>
+      <div class="overlay"></div> <!-- Agregamos un overlay para la animación -->
+    </div>
+  </div>
+  
+  <div class="aside col-lg-4">
+    <ul class="list-group pokemon-list">
+      <!-- Aplicación de la animación a cada elemento de la lista -->
+      <li *ngFor="let pokemon of pokemonList"
+          (click)="selectPokemon(pokemon.name)"
+          [class.active]="selectedPokemon && selectedPokemon.name === pokemon.name"
+          class="list-group-item d-flex align-items-center animate__animated"
+          [ngClass]="{'animate__bounceInLeft': selectedPokemon && selectedPokemon.name === pokemon.name}">
+        <img [src]="pokemon.sprite" alt="{{ pokemon.name }}" class="sprite-icon me-3">
+        <div>
+          <span class="pokemon-name d-block"><strong>{{ pokemon.name }}</strong></span>
+          <span class="pokemon-id text-muted">#{{ pokemon.id }}</span>
+          <div class="pokemon-types mt-2">
+            <span *ngFor="let type of getPokemonTypes(pokemon.types)" class="badge bg-secondary me-1">{{ type }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
